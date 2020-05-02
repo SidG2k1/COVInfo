@@ -1,25 +1,43 @@
 # searches the dataset for matches
 
 
+def clean(text):
+    """
+    returns a list of words, from text, removing unnecessary punctuation and
+    stopwords
+    """
+    from stopwords import stopwords
+    import string
+    
+    # trimming stopwords:
+    stops = stopwords()
+    ret = [word for word in text.split() if (word not in stops) and len(word) > 1]
+    
+    # trimming punctuation:
+    punc = string.punctuation
+    for i in range(len(ret)):
+        og = ret[i]
+        if  og[0] in punc: og = og[1:]
+        if og[-1] in punc: og = og[:-1]
+        ret[i] = og
+        
+    return ret
+    
 
-
-def similarity_score(text_small, text_large, min_small = 30, min_large = 100):
+def similarity_score(text_small, text_large, min_small = 10, min_large = 50):
     """
     complexity: len(small) * len(large)
     @param text_small: the smaller text 
                        (in this case the text which's validity is being checked)
     @param text_large: the larger text (in this case the scientific study)
+    
     returns: a number (-1 <= n <= 100) representing the similarity
+             -1 if the data isn't populated enough for reliability
     """
 
-    # cleaning text:
-    from stopwords import stopwords
-    stops = stopwords()
-    small_words = text_small.split()
-    large_words = text_large.split()
-    
-    filtered_small = [word for word in small_words if word not in stops]
-    filtered_large = [word for word in large_words if word not in stops]
+    # cleaning text:    
+    filtered_small = clean(text_small)
+    filtered_large = clean(text_large)
     
     fSmallLen = len(filtered_small)
     fLargeLen = len(filtered_large)
