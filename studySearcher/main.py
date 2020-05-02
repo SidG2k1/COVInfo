@@ -1,15 +1,15 @@
 """
 """
-def summarize(text):
-    import requests
-    r = requests.post(
-    "https://api.deepai.org/api/summarization",
-    data={
-        'text': 'YOUR_TEXT_HERE',
-    },
-    headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
-    )
-    return r.json()
+# def summarize(text):
+#     import requests
+#     r = requests.post(
+#     "https://api.deepai.org/api/summarization",
+#     data={
+#         'text': 'YOUR_TEXT_HERE',
+#     },
+#     headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
+#     )
+#     return r.json()
 
 def auto_summarize(text):
     # TODO: implement
