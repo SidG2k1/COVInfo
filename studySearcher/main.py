@@ -1,5 +1,15 @@
 """
 """
+import requests
+def summarize(text):
+    r = requests.post(
+    "https://api.deepai.org/api/summarization",
+    data={
+        'text': 'YOUR_TEXT_HERE',
+    },
+    headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
+    )
+    return r.json()
 
 def best_studies(text, n = 5):
     """
