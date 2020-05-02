@@ -1,7 +1,7 @@
 """
 """
-import requests
 def summarize(text):
+    import requests
     r = requests.post(
     "https://api.deepai.org/api/summarization",
     data={
@@ -10,6 +10,10 @@ def summarize(text):
     headers={'api-key': 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}
     )
     return r.json()
+
+def auto_summarize(text):
+    # TODO: implement
+    return text
 
 def best_studies(text, n = 5):
     """
@@ -28,6 +32,6 @@ def best_studies(text, n = 5):
     ret = []
     for i in tops:
         to_add = csv_reader[1 + i[1]]
-        ret.append([to_add[0], summarize(to_add[1]), to_add[2], to_add[3]])
+        ret.append([to_add[0], auto_summarize(to_add[1]), to_add[2], to_add[3]])
         # TODO: implement and integrate summarize function
     return ret
