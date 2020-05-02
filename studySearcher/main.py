@@ -22,7 +22,7 @@ def best_studies(text, n = 5):
     """
     import csv
     from similarity import similarity_score
-    studies_csv = open('./*.csv', mode = 'r')
+    studies_csv = open('./metadata.csv', mode = 'r')
     csv_reader = csv.reader(studies_csv, delimiter=',')
     rankings = []
     for row, vals in enumerate(csv_reader[1:]):
@@ -35,3 +35,7 @@ def best_studies(text, n = 5):
         ret.append([to_add[0], auto_summarize(to_add[1]), to_add[2], to_add[3]])
         # TODO: implement and integrate summarize function
     return ret
+
+if __name__ == "__main__":
+    read = 'testing here'  # replace with source file
+    print(best_studies(read))
