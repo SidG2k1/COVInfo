@@ -14,7 +14,7 @@
 def auto_summarize(text):
     return text
 
-def best_studies(text, n = 5):
+def best_studies(text, n = 5, min_accuracy = -1):
     """
     Returns the top n studies for text.
     A 'study' is [Title, Summary, Journal, URL]
@@ -30,7 +30,7 @@ def best_studies(text, n = 5):
     tops = rankings[::-1][:5]  # [[sim_score, row], x5]
     ret = []
     for i in tops:
-        if i[0] <= 0: break  # not accurate enough
+        if i[0] < min_accuracy: break  # not accurate enough
         to_add = csv_reader[1 + i[1]]
         ret.append([to_add[0], auto_summarize(to_add[1]), to_add[2], to_add[3]])
     if ret == []: print("No approprite articles found")

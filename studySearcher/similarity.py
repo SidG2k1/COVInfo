@@ -8,7 +8,11 @@ def clean(text):
     
     # trimming stopwords:
     stops = stopwords()
-    ret = [word for word in text.split() if (word not in stops) and len(word) > 1]
+    text = text.split()
+    ret = []
+    for word in text:
+        if (word not in stops) and (len(word) > 1):
+            ret.append(word)
     
     # trimming punctuation:
     punc = string.punctuation
