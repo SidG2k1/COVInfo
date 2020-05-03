@@ -33,6 +33,7 @@ def best_studies(text, n = 5):
         if i[0] <= 0: break  # not accurate enough
         to_add = csv_reader[1 + i[1]]
         ret.append([to_add[0], auto_summarize(to_add[1]), to_add[2], to_add[3]])
+    if ret == []: print("No approprite articles found")
     return ret
 
 if __name__ == "__main__":
