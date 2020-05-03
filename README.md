@@ -6,3 +6,6 @@ Hackathon Project for TOHacks 2020
 - Python 3
 - Google Chrome
 - pip3 google-cloud-bigquery
+
+Demo:
+[![Demo](https://img.youtube.com/vi/8POXyy0nzhQ/0.jpg)](https://www.youtube.com/watch?v=8POXyy0nzhQ)
